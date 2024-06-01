@@ -39,25 +39,30 @@
 }
 
 .nav-bar{
-  width: 100px;
+  width: 80px;
 }
 
 .nav-bar-slider{
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100px;
-  background-color: #0077b6;
+  width: 80px;
+  background-color: #274c77;
 }
 
 .nav-bar-slider:hover{
   position: relative;
   width: 200px;
   height: 100%;
-  background-color: #0077b6;
+  background-color: #274c77;
   transition: all 0.3s ease 0s;
 }
 
 .side-menu-item{
-  height: 40px;
+  width: 200px;
+}
+
+.side-menu-item:hover{
+    background-color: #6096ba;
+    transition: all 0.3s ease 0s;
 }

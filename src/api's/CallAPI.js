@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API_URL } from "./apiHeaders";
 
 export const getTicketsAPI = async () => {
-  const url = "http://localhost:3001/api/ticket/findall";
+  const url = API_URL + "/api/ticket/findall";
   const response = await axios.get(
     url,
     null,

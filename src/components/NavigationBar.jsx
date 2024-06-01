@@ -1,28 +1,22 @@
 import { HiOutlineTicket } from "react-icons/hi2";
 import { SiJirasoftware } from "react-icons/si";
-import { GoGraph } from "react-icons/go";
+import { MdAddChart } from "react-icons/md";
+import { FaGithub } from "react-icons/fa";
+import MenuItem from "./MenuItem";
 const NavigationBar = () => {
   return (
     <div className="nav-bar">
       <div className="nav-bar-slider">
         <br />
-        <br />
-        <div className="flex items-center w-36 gap-3">
-          <SiJirasoftware className="w-8 h-8 text-white ml-6"></SiJirasoftware>
-          <div> Jira Clone </div>
-        </div>
+        <MenuItem Image={SiJirasoftware} title={"Jira"} />
         <br />
         <br />
-        <div className="flex items-center  w-36 gap-3">
-          <HiOutlineTicket className="w-8 h-8 text-white ml-6" />
-          <div>Board</div>
-        </div>
+        <MenuItem Image={HiOutlineTicket} title={"Board"} />
         <br />
+        <MenuItem Image={MdAddChart} title={"Charts"} />
         <br />
-        <div className="flex items-center  w-36 gap-3">
-          <GoGraph className="w-8 h-8 text-white ml-6" />
-          <div>Charts</div>
-        </div>
+        <MenuItem Image={FaGithub} title={"Git Hub"} />
+        <br />
       </div>
     </div>
   );
