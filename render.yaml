@@ -1,0 +1,9 @@
+services:
+  - name: jira-clone-ui
+    buildCommand: npm run build
+    startCommand: npm run dev
+    env:
+      - key: NODE_ENV
+        value: development
+    ports:
+      - 3000
