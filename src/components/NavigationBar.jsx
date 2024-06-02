@@ -13,7 +13,7 @@ const NavigationBar = () => {
         <br />
         <MenuItem Image={HiOutlineTicket} title={"Board"} />
         <br />
-        <MenuItem Image={MdAddChart} title={"Charts"} />
+        <MenuItem Image={MdAddChart} title={"Reports"} />
         <br />
         <MenuItem Image={FaGithub} title={"Git Hub"} />
         <br />

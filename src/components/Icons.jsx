@@ -8,22 +8,58 @@ import { MdPriorityHigh } from "react-icons/md";
 
 export const TicketTypeIcon = ({ ticketType, css }) => {
   if (ticketType === TICKET_TYPE.STORY)
-    return <FaRegBookmark className={css + "text-green-600"} />;
+    return (
+      <FaRegBookmark
+        className={css + "text-green-600"}
+        title={TICKET_TYPE.STORY}
+      />
+    );
   else if (ticketType === TICKET_TYPE.BUG)
-    return <GrBug className={css + "text-red-600"} />;
+    return <GrBug className={css + "text-red-600"} title={TICKET_TYPE.BUG} />;
   else if (ticketType === TICKET_TYPE.SUPPORT)
-    return <MdOutlineCheckBox className={css + "text-blue-800"} />;
+    return (
+      <MdOutlineCheckBox
+        className={css + "text-blue-800"}
+        title={TICKET_TYPE.SUPPORT}
+      />
+    );
 };
 
 export const TicketPriorityIcon = ({ ticketPriority, css }) => {
   if (ticketPriority === TICKET_PRIORITY.CRITICAL)
-    return <MdPriorityHigh className={css + "text-red-800"} />;
+    return (
+      <MdPriorityHigh
+        className={css + "text-red-800"}
+        title="Story"
+        title={TICKET_PRIORITY.CRITICAL}
+      />
+    );
   else if (ticketPriority === TICKET_PRIORITY.VERY_HIGH)
-    return <IoArrowUpSharp className={css + "text-red-800"} />;
+    return (
+      <IoArrowUpSharp
+        className={css + "text-red-800"}
+        title={TICKET_PRIORITY.CRITICAL}
+      />
+    );
   else if (ticketPriority === TICKET_PRIORITY.HIGH)
-    return <IoArrowUpSharp className={css + "text-red-600"} />;
+    return (
+      <IoArrowUpSharp
+        className={css + "text-red-600"}
+        title={TICKET_PRIORITY.HIGH}
+      />
+    );
   else if (ticketPriority === TICKET_PRIORITY.MEDIUM)
-    return <IoArrowDownSharp className={css + "text-red-500"} />;
+    return (
+      <IoArrowDownSharp
+        className={css + "text-red-500"}
+        title={TICKET_PRIORITY.MEDIUM}
+      />
+    );
   else if (ticketPriority === TICKET_PRIORITY.LOW)
-    return <IoArrowDownSharp className={css + "text-blue-400"} />;
+    return (
+      <IoArrowDownSharp
+        className={css + "text-blue-400"}
+        title={TICKET_PRIORITY.LOW}
+      />
+    );
 };
