@@ -3,6 +3,7 @@ import { getTicketsAPI, getUsersAPI, updateTicketAPI } from "./api's/CallAPI";
 import { TICKET_STATUS } from "./constants";
 import Section from "./components/Section";
 import NavigationBar from "./components/NavigationBar";
+import Header from "./components/Header";
 
 function JiraBoard() {
   const [ticketDragged, setTicketDragged] = useState({});
@@ -63,12 +64,11 @@ function JiraBoard() {
     <div className="flex gap-6">
       <NavigationBar />
       <div className="flex flex-col">
-        <p>Projects / Jira Clone</p>
-        <h1>Kanban Board</h1>
-        <input />
+        <Header />
+        <br />
         <div className="tickets-container ">
           <Section
-            title={"TODO"}
+            title={"TO DO"}
             tickets={tickets}
             filterStatus={TICKET_STATUS.TODO}
             handleDrag={handleDrag}

@@ -7,6 +7,7 @@
 
 .ticket-card {
   box-shadow: 0 5px 8px #e9ecef;
+  border: 1px solid #EEEEEE;
   overflow: hidden;
   border-radius: 2px;
   background-color: #fff;
@@ -26,13 +27,9 @@
 .ticket-card:hover {
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
-  border: 2px solid #007bff;
+  border: 1px solid #007bff;
   cursor: grabbing;
 }
-
-/* .ticket-card:hover {
-  transform: translateY(-5px);
-} */
 
 .ticket-card-title{
   padding: 10px;
@@ -41,12 +38,12 @@
 
 .ticket-section-title{
   margin: 5px;
+  color: #686D76;
 }
 
 .ticket-section{
   display: flex;
   flex-direction: column;
-  gap:5px;
   --tw-bg-opacity: 1;
   background-color: #e9ecef;
   padding: 15px;
@@ -68,6 +65,7 @@
 .nav-bar-slider:hover{
   position: relative;
   width: 200px;
+  z-index: 100;
   height: 100%;
   background-color: #03045e;
   transition: all 0.3s ease 0s;
@@ -85,4 +83,31 @@
 .user-icon svg{
   width: 30px;
   height: 30px;
+}
+
+.search-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 200px;
+  margin: 10px 10px 10px 0px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
 }

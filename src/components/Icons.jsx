@@ -1,15 +1,15 @@
-import { MdOutlineCheckBox } from "react-icons/md";
 import { TICKET_PRIORITY, TICKET_TYPE } from "../constants";
 import { IoArrowUpSharp } from "react-icons/io5";
 import { IoArrowDownSharp } from "react-icons/io5";
 import { MdPriorityHigh } from "react-icons/md";
 import { AiFillBug } from "react-icons/ai";
-import { FaBookmark } from "react-icons/fa";
+import { FaCheckSquare } from "react-icons/fa";
+import { IoBookmarkSharp } from "react-icons/io5";
 
 export const TicketTypeIcon = ({ ticketType, css }) => {
   if (ticketType === TICKET_TYPE.STORY)
     return (
-      <FaBookmark
+      <IoBookmarkSharp
         className={css + "text-green-600"}
         title={TICKET_TYPE.STORY}
       />
@@ -20,8 +20,8 @@ export const TicketTypeIcon = ({ ticketType, css }) => {
     );
   else if (ticketType === TICKET_TYPE.SUPPORT)
     return (
-      <MdOutlineCheckBox
-        className={css + "text-blue-800"}
+      <FaCheckSquare
+        className={css + "text-blue-500"}
         title={TICKET_TYPE.SUPPORT}
       />
     );
