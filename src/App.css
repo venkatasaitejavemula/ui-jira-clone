@@ -16,6 +16,20 @@
   transition: 1s ease;
 }
 
+.ticket-card:active {
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  border: 2px solid #007bff;
+  cursor: grabbing;
+}
+
+.ticket-card:hover {
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  border: 2px solid #007bff;
+  cursor: grabbing;
+}
+
 /* .ticket-card:hover {
   transform: translateY(-5px);
 } */
@@ -66,4 +80,9 @@
 .side-menu-item:hover{
     background-color: #023e8a;
     transition: all 0.3s ease 0s;
+}
+
+.user-icon svg{
+  width: 30px;
+  height: 30px;
 }

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { getTicketsAPI, updateTicketAPI } from "./api's/CallAPI";
+import { getTicketsAPI, getUsersAPI, updateTicketAPI } from "./api's/CallAPI";
 import { TICKET_STATUS } from "./constants";
 import Section from "./components/Section";
 import NavigationBar from "./components/NavigationBar";
@@ -7,10 +7,21 @@ import NavigationBar from "./components/NavigationBar";
 function JiraBoard() {
   const [ticketDragged, setTicketDragged] = useState({});
   const [tickets, setTickets] = useState([]);
+  const [users, setUsers] = useState([]);
   const getTickets = useCallback(() => {
     getTicketsAPI()
       .then((res) => {
         setTickets(res?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const getUsers = useCallback(() => {
+    getUsersAPI()
+      .then((res) => {
+        setUsers(res?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -46,6 +57,7 @@ function JiraBoard() {
 
   useEffect(() => {
     getTickets();
+    getUsers();
   }, []);
   return (
     <div className="flex gap-6">
@@ -62,6 +74,7 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
+            users={users}
           />
           <Section
             title={"IN PROGRESS"}
@@ -70,6 +83,7 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
+            users={users}
           />
           <Section
             title={"READY FOR TESTING"}
@@ -78,6 +92,7 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
+            users={users}
           />
           <Section
             title={"DONE"}
@@ -86,6 +101,7 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
+            users={users}
           />
         </div>
       </div>

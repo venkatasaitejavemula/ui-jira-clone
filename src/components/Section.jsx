@@ -8,10 +8,12 @@ function Section({
   handleDrag,
   handleDrop,
   onDragOver,
+  users,
 }) {
   let filteredTickets = useMemo(() => {
     return tickets?.filter((item) => item?.status === filterStatus);
   }, [tickets, filterStatus]);
+
   return (
     <div
       className="ticket-section"
@@ -22,7 +24,15 @@ function Section({
         {title} <b>({filteredTickets.length})</b>
       </div>
       {filteredTickets?.map((item, index) => {
-        return <Ticket key={index} handleDrag={handleDrag} item={item} />;
+        let userInfo = users?.filter((x) => x?.userEmail === item?.assignee);
+        return (
+          <Ticket
+            key={index}
+            handleDrag={handleDrag}
+            item={item}
+            userInfo={userInfo}
+          />
+        );
       })}
     </div>
   );

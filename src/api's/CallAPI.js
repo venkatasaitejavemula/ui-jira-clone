@@ -16,9 +16,19 @@ export const getTicketsAPI = async () => {
 
 export const updateTicketAPI = async (_id, payload) => {
   const url = API_URL + `/api/ticket/update-ticket/${_id}`;
-  const response = await axios.put(
+  const response = await axios.put(url, payload);
+  return response;
+};
+
+export const getUsersAPI = async () => {
+  const url = API_URL + "/api/user/findall";
+  const response = await axios.get(
     url,
-    payload,
+    null,
+    {
+      headers: { "Access-Control-Allow-Origin": "*" },
+    },
+    { mode: "cors" }
   );
   return response;
 };

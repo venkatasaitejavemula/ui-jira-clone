@@ -1,21 +1,23 @@
-import { FaRegBookmark } from "react-icons/fa";
 import { MdOutlineCheckBox } from "react-icons/md";
-import { GrBug } from "react-icons/gr";
 import { TICKET_PRIORITY, TICKET_TYPE } from "../constants";
 import { IoArrowUpSharp } from "react-icons/io5";
 import { IoArrowDownSharp } from "react-icons/io5";
 import { MdPriorityHigh } from "react-icons/md";
+import { AiFillBug } from "react-icons/ai";
+import { FaBookmark } from "react-icons/fa";
 
 export const TicketTypeIcon = ({ ticketType, css }) => {
   if (ticketType === TICKET_TYPE.STORY)
     return (
-      <FaRegBookmark
+      <FaBookmark
         className={css + "text-green-600"}
         title={TICKET_TYPE.STORY}
       />
     );
   else if (ticketType === TICKET_TYPE.BUG)
-    return <GrBug className={css + "text-red-600"} title={TICKET_TYPE.BUG} />;
+    return (
+      <AiFillBug className={css + "text-red-600"} title={TICKET_TYPE.BUG} />
+    );
   else if (ticketType === TICKET_TYPE.SUPPORT)
     return (
       <MdOutlineCheckBox
