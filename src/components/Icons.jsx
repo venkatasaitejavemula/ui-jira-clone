@@ -30,7 +30,6 @@ export const TicketPriorityIcon = ({ ticketPriority, css }) => {
     return (
       <MdPriorityHigh
         className={css + "text-red-800"}
-        title="Story"
         title={TICKET_PRIORITY.CRITICAL}
       />
     );
