@@ -1,6 +1,5 @@
 import { TicketPriorityIcon, TicketTypeIcon } from "./Icons";
 function Ticket({ handleDrag, item, userInfo }) {
-  console.log(userInfo?.[0]?.userAvatar);
   return (
     <div>
       {" "}

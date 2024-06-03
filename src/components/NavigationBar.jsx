@@ -1,4 +1,3 @@
-import { HiOutlineTicket } from "react-icons/hi2";
 import { SiJirasoftware } from "react-icons/si";
 import { MdAddChart } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";

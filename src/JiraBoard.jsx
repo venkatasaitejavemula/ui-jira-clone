@@ -4,15 +4,23 @@ import { TICKET_STATUS } from "./constants";
 import Section from "./components/Section";
 import NavigationBar from "./components/NavigationBar";
 import Header from "./components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { ticketSliceActions } from "./slice/ticketSlice";
 
 function JiraBoard() {
   const [ticketDragged, setTicketDragged] = useState({});
   const [tickets, setTickets] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const dispatch = useDispatch();
+  const reduxUsers = useSelector((state) => state.jira.users);
+  const reduxTickets = useSelector((state) => state.jira.tickets);
+
   const getTickets = useCallback(() => {
     getTicketsAPI()
       .then((res) => {
-        setTickets(res?.data);
+        dispatch(ticketSliceActions.setTickets(res?.data));
       })
       .catch((err) => {
         console.log(err);
@@ -22,7 +30,7 @@ function JiraBoard() {
   const getUsers = useCallback(() => {
     getUsersAPI()
       .then((res) => {
-        setUsers(res?.data);
+        dispatch(ticketSliceActions.setUsers(res?.data));
       })
       .catch((err) => {
         console.log(err);
@@ -56,15 +64,66 @@ function JiraBoard() {
     e.preventDefault();
   };
 
+  const onSelectUser = useCallback(
+    (user) => {
+      let selUsers;
+      if (selectedUser?.includes(user)) {
+        selUsers = selectedUser?.filter((x) => x !== user);
+        setSelectedUser(selUsers);
+      } else {
+        selUsers = [...selectedUser, user];
+        setSelectedUser(selUsers);
+      }
+      if (selUsers.length === 0) {
+        setTickets(reduxTickets);
+      } else {
+        let filteredEmails = [];
+        reduxUsers?.forEach((item) => {
+          if (selUsers?.includes(item?.userName))
+            return filteredEmails.push(item?.userEmail);
+        });
+        let filterTickets = reduxTickets?.filter((item) =>
+          filteredEmails?.includes(item?.assignee)
+        );
+        setTickets(filterTickets);
+      }
+    },
+    [selectedUser, reduxTickets, reduxUsers]
+  );
+
+  const handleSearch = useCallback(
+    (searchTerm) => {
+      if (!searchTerm) {
+        setTickets(reduxTickets);
+      } else {
+        let filterTickets = reduxTickets?.filter((item) =>
+          item?.title?.toLowerCase()?.includes(searchTerm?.toLowerCase())
+        );
+        setTickets(filterTickets);
+      }
+    },
+    [reduxTickets]
+  );
+
   useEffect(() => {
     getTickets();
     getUsers();
   }, []);
+
+  useEffect(() => {
+    setTickets(reduxTickets);
+  }, [reduxTickets]);
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 h-full">
       <NavigationBar />
-      <div className="flex flex-col">
-        <Header />
+      <div className="flex flex-col overflow-auto">
+        <Header
+          selectedUser={selectedUser}
+          onSelectUser={onSelectUser}
+          handleSearch={handleSearch}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
         <br />
         <div className="tickets-container ">
           <Section
@@ -74,7 +133,6 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
-            users={users}
           />
           <Section
             title={"IN PROGRESS"}
@@ -83,7 +141,6 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
-            users={users}
           />
           <Section
             title={"READY FOR TESTING"}
@@ -92,7 +149,6 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
-            users={users}
           />
           <Section
             title={"DONE"}
@@ -101,7 +157,6 @@ function JiraBoard() {
             handleDrag={handleDrag}
             handleDrop={handleDrop}
             onDragOver={onDragOver}
-            users={users}
           />
         </div>
       </div>

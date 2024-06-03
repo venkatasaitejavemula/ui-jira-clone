@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import Ticket from "./Ticket";
+import { useSelector } from "react-redux";
 
 function Section({
   title,
@@ -8,11 +9,12 @@ function Section({
   handleDrag,
   handleDrop,
   onDragOver,
-  users,
 }) {
   let filteredTickets = useMemo(() => {
     return tickets?.filter((item) => item?.status === filterStatus);
   }, [tickets, filterStatus]);
+
+  const reduxUsers = useSelector((state) => state.jira.users);
 
   return (
     <div
@@ -21,10 +23,12 @@ function Section({
       onDragOver={onDragOver}
     >
       <div className="ticket-section-title">
-        {title} <b>({filteredTickets.length})</b>
+        {title} <b>({filteredTickets?.length})</b>
       </div>
       {filteredTickets?.map((item, index) => {
-        let userInfo = users?.filter((x) => x?.userEmail === item?.assignee);
+        let userInfo = reduxUsers?.filter(
+          (x) => x?.userEmail === item?.assignee
+        );
         return (
           <Ticket
             key={index}

@@ -2,17 +2,17 @@
     display: flex;
     gap:20px;
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    padding: 5px;
 }
 
 .ticket-card {
   box-shadow: 0 5px 8px #e9ecef;
   border: 1px solid #EEEEEE;
   overflow: hidden;
-  border-radius: 2px;
   background-color: #fff;
   margin: 3px;
-  max-width: 300px;
+  max-width: 500px;
   cursor: grab;
   transition: 1s ease;
 }
@@ -45,32 +45,23 @@
   display: flex;
   flex-direction: column;
   --tw-bg-opacity: 1;
-  background-color: #e9ecef;
-  padding: 15px;
+  background-color: rgb(244, 245, 247);
+  border-radius: 5px;
+  padding: 5px;
   min-width: 300px;
 }
 
 .nav-bar{
-  width: 80px;
+  width: 200px;
 }
 
 .nav-bar-slider{
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 80px;
-  background-color: #03045e;
-}
-
-.nav-bar-slider:hover{
-  position: relative;
   width: 200px;
-  z-index: 100;
-  height: 100%;
   background-color: #03045e;
-  transition: all 0.3s ease 0s;
 }
-
 .side-menu-item{
   width: 200px;
 }
@@ -83,6 +74,11 @@
 .user-icon svg{
   width: 30px;
   height: 30px;
+}
+
+.user-icon:hover{
+  transform: translateY(-5px);
+  transition: all 0.3s ease 0s;
 }
 
 .search-container {
@@ -110,4 +106,11 @@
   font-size: 20px;
   color: #888;
   cursor: pointer;
+}
+
+.active-user svg{
+  border: 1px solid #007bff;
+  transform: scale(1.1);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
 }
