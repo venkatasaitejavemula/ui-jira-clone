@@ -115,7 +115,6 @@ function JiraBoard() {
   }, [reduxTickets]);
   return (
     <div className="flex gap-6 h-full">
-      <NavigationBar />
       <div className="flex flex-col overflow-auto">
         <Header
           selectedUser={selectedUser}

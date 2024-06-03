@@ -5,6 +5,8 @@ html, body {
   
   #root {
     height: 100%;
+    display: flex;
+    gap:20px;
   }
 @tailwind base;
 @tailwind components;

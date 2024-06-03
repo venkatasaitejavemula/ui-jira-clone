@@ -9,9 +9,9 @@ function App() {
 
   useEffect(() => {
     let routeExists = location.split("/")?.[1];
-    if (!routeExists) {
-      navigate("/dashboard");
-    }
+    // if (!routeExists) {
+    //   navigate("/dashboard");
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
