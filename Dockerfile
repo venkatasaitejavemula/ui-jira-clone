@@ -15,6 +15,6 @@ FROM nginx:alpine
 
 COPY --from=BUILD_IMAGE /app/dist /usr/share/nginx/html
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD ["npm", "run", "preview"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
