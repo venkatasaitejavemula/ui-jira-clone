@@ -3,7 +3,7 @@ FROM node:16-alpine as BUILD_IMAGE
 WORKDIR /app
 
 COPY package*.json .
-COPY vite.config.js
+COPY vite.config.js .
 
 RUN npm install
 
